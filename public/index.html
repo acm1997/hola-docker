@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Tramo · Calculadora de gastos de viaje en coche</title>
+  <meta name="description" content="Calcula cuánto cuesta viajar en coche. Suma combustible, peajes y aparcamiento, reparte los gastos y comparte el presupuesto con tus acompañantes.">
+  <meta name="theme-color" content="#f8f7f0">
+  <meta property="og:title" content="Tramo · ¿Cuánto cuesta tu viaje en coche?">
+  <meta property="og:description" content="Haz las cuentas de tu próxima escapada y comparte cuánto pone cada persona.">
+  <meta property="og:type" content="website"><meta property="og:locale" content="es_ES">
+  <link rel="canonical" href="__CANONICAL__"><link rel="icon" href="/marca.png">
+  <link rel="stylesheet" href="/estilo.css"><script defer src="/mapa.js"></script><script defer src="/viaje.js"></script>
+</head>
+<body>
+<a class="skip" href="#calculadora">Ir a la calculadora</a>
+<header><div class="wrap nav"><a class="brand" href="/" aria-label="Tramo, inicio"><img width="35" height="35" alt="" src="/marca.png">tramo<span>.</span></a><nav aria-label="Principal"><a href="#calculadora" class="nav-calc">Calculadora</a><a href="#guia">Guía de viaje</a><a href="/colabora" class="nav-partner">Colabora <span aria-hidden="true">↗</span></a></nav></div></header>
+<main class="wrap">
+<section class="hero" aria-labelledby="titulo">
+  <div><p class="eyebrow"><i></i> Calculadora de carretera</p><h1 id="titulo">¿Cuánto cuesta<br><em>tu viaje?</em></h1><p class="intro">Echa cuentas antes de arrancar. Suma combustible, peajes y aparcamiento y descubre cuánto pone cada persona.</p>
+  <a class="jump" href="#calculadora">Calcular mi viaje <span aria-hidden="true">↓</span></a></div>
+  <figure class="map" aria-label="Croquis ilustrativo de un recorrido entre el origen y el destino"><canvas id="mapa" width="800" height="410" aria-hidden="true"></canvas><div class="map-key" aria-hidden="true"><b></b> TU RECORRIDO</div><div class="north" aria-hidden="true">N<span>↑</span></div><figcaption><span id="map-km">300 km</span> <span class="map-dot">·</span> <span id="map-dir">Solo ida</span></figcaption></figure>
+</section>
+<section id="calculadora" class="calculator" aria-label="Calculadora de costes">
+  <form class="form-card" id="viaje"><div class="section-head"><span class="small-icon" aria-hidden="true">≡</span><h2>Datos del viaje</h2></div>
+    <fieldset class="trip"><legend>Trayecto</legend><div class="segment"><label><input type="radio" name="trayecto" value="ida" checked><span>Solo ida <b aria-hidden="true">→</b></span></label><label><input type="radio" name="trayecto" value="vuelta"><span>Ida y vuelta <b aria-hidden="true">⇄</b></span></label></div></fieldset>
+    <div class="field-grid">
+      <label>Distancia de ida<span class="field"><input id="km" name="km" type="number" inputmode="decimal" value="300" min="0.1" max="100000" step="any" required><span>km</span></span></label>
+      <div><label for="personas">Personas en el coche</label><div class="people"><button type="button" id="menos" aria-label="Quitar una persona">−</button><input id="personas" name="personas" type="number" inputmode="numeric" min="1" max="60" step="1" value="2" required><button type="button" id="mas" aria-label="Añadir una persona">+</button></div></div>
+      <label>Consumo medio<span class="field"><input id="consumo" name="consumo" type="number" inputmode="decimal" min="0.1" max="200" step="any" value="6" required><span>l/100 km</span></span></label>
+      <label>Precio del carburante<span class="field"><input id="precio" name="precio" type="number" inputmode="decimal" min="0.01" max="30" step="any" value="1.60" required><span>€/l</span></span></label>
+      <label>Peajes por trayecto<span class="field"><input id="peajes" name="peajes" type="number" inputmode="decimal" min="0" max="100000" step="any" value="0" required><span>€</span></span></label>
+      <label>Aparcamiento total<span class="field"><input id="parking" name="parking" type="number" inputmode="decimal" min="0" max="100000" step="any" value="0" required><span>€</span></span></label>
+    </div><p class="hint">Los importes iniciales son un ejemplo. Usa el precio de tu último repostaje.</p>
+  </form>
+  <aside class="receipt" aria-labelledby="resumen"><div class="receipt-inner"><div class="receipt-head"><i></i><h2 id="resumen">Presupuesto del viaje</h2></div>
+  <p class="total-label">Coste total estimado</p><div id="total" class="total">28,80 €</div>
+  <div class="per"><span>Por persona</span><strong id="por-persona">14,40 €</strong></div>
+  <dl><div><dt>Combustible <span id="litros">· 18 l</span></dt><dd id="coste-gas">28,80 €</dd></div><div><dt>Peajes</dt><dd id="coste-peajes">0,00 €</dd></div><div><dt>Aparcamiento</dt><dd id="coste-parking">0,00 €</dd></div></dl>
+  <button class="share" id="compartir" type="button">Compartir presupuesto <span aria-hidden="true">↗</span></button><p class="feedback" role="status" id="estado"></p><label id="manual" hidden>Enlace para copiar<input id="enlace" readonly></label></div></aside>
+</section>
+<noscript><p>Activa JavaScript para modificar los importes del ejemplo.</p></noscript>
+__SPONSOR__
+<section id="guia" class="guide"><div><p class="eyebrow"><i></i> Cuaderno de ruta</p><h2>Antes de salir<span>.</span></h2></div><div class="articles">
+  <details open><summary>Cómo calcular el combustible</summary><p>Multiplica los kilómetros totales por el consumo medio de tu coche, divide entre 100 y multiplica por el precio del litro. Para 300 km a 6 l/100 km necesitarás 18 litros. A 1,60 €/l son 28,80 €.</p></details>
+  <details><summary>Qué cambia en un viaje de ida y vuelta</summary><p>Introduce la distancia y los peajes de un solo trayecto. Al elegir ida y vuelta, Tramo duplica ambos y suma el aparcamiento una sola vez. Si vuelves por otra carretera, usa «Solo ida» e introduce la distancia y los peajes acumulados.</p></details>
+  <details><summary>Cómo repartir los gastos entre el grupo</summary><p>Cuenta a todas las personas que van a pagar, incluido quien conduce si también participa. Si el combustible cuesta 28,80 € y el aparcamiento 12 €, entre tres personas salen 13,60 € por cabeza. El reparto se redondea al céntimo.</p></details>
+</div></section>
+<section class="gear" aria-labelledby="equipaje"><div class="gear-head"><h2 id="equipaje">Para llevar en el coche</h2><span>Selección de viaje</span></div><div class="gear-grid">__GEAR__</div><p class="hint">__DISCLOSURE__</p></section>
+</main>
+<footer><div class="wrap foot"><a class="brand" href="/"><img width="28" height="28" src="/marca.png" alt="">tramo<span>.</span></a><div><a href="/colabora">Patrocinios</a><a href="/privacidad">Privacidad y contacto</a></div></div></footer>
+</body></html>

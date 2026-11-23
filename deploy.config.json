@@ -1,0 +1,13 @@
+{
+  "name": "tramo-viajes",
+  "metadata": {
+    "main_module": "worker.mjs",
+    "compatibility_date": "2026-11-23",
+    "keep_bindings": ["plain_text", "secret_text"],
+    "bindings": [
+      {"type": "kv_namespace", "name": "PROPUESTAS", "namespace_id": null},
+      {"type": "ratelimit", "name": "CONTACT_LIMIT", "namespace_id": "48321576", "simple": {"limit": 6, "period": 60}},
+      {"type": "plain_text", "name": "AMAZON_TRACKING_ID", "text": "acmafilied-21"}
+    ]
+  }
+}
